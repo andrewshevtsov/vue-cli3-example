@@ -12,7 +12,9 @@
           <th class="table__header-cell">Id</th>
           <th class="table__header-cell">Last Name</th>
           <th class="table__header-cell">First Name</th>
-          <th class="table__header-cell">Middle Name</th>
+          <th class="table__header-cell">Company</th>
+          <th class="table__header-cell">Balance</th>
+          <th class="table__header-cell table__header-cell--address">Address</th>
           <th class="table__header-cell">User Photo</th>
         </tr>
       </thead>
@@ -23,9 +25,11 @@
           </td>
           <td class="table__body-cell">{{ item.lastName | toUppercase }}</td>
           <td class="table__body-cell">{{ item.firstName | toUppercase }}</td>
-          <td class="table__body-cell">{{ item.middleName | toUppercase }}</td>
+          <td class="table__body-cell">{{ item.company | toUppercase }}</td>
+          <td class="table__body-cell">{{ item.balance | toUppercase }}</td>
+          <td class="table__body-cell">{{ item.address | toUppercase }}</td>
           <td class="table__body-cell">
-            <img v-bind:src="item.avatarUrl || defaultImage" width="100px" alt="Avatar" />
+            <img v-bind:src="item.picture || defaultImage" width="100px" alt="Avatar" />
           </td>
         </tr>
       </tbody>
@@ -64,3 +68,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.table__header-cell--address {
+  width: 200px;
+}
+</style>

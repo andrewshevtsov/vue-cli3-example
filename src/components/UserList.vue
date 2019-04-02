@@ -20,8 +20,11 @@
       </thead>
       <tbody class="table__body">
         <tr v-for="item in users" v-bind:key="item.id" class="table__row">
-          <td class="table__body-cell">
-            <button v-on:click="remove(item.id)" type="button"># {{ item.id }}</button>
+          <td class="table__body-cell table__body-cell--id">
+            <button v-on:click="remove(item.id)" type="button" title="Delete">
+              {{ 'Del ' + item.id }}
+            </button>
+            <router-link :to="'/edit' + item.id"># {{ item.id }}</router-link>
           </td>
           <td class="table__body-cell">{{ item.lastName | toUppercase }}</td>
           <td class="table__body-cell">{{ item.firstName | toUppercase }}</td>
@@ -72,5 +75,10 @@ export default {
 <style>
 .table__header-cell--address {
   width: 200px;
+}
+
+.table__body-cell--id {
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -8,6 +8,8 @@ import Users from '@/views/Users.vue'
 Vue.use(Router)
 
 export default new Router({
+  linkActiveClass: 'active',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -15,7 +17,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/edit',
+      path: '/edit:id',
       name: 'edit',
       component: EditUser
     },

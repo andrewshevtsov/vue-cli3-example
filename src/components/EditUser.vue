@@ -3,21 +3,11 @@
     <form>
       <div class="form-group">
         <label for="first-name-field">Имя</label>
-        <input
-          type="text"
-          class="form-control"
-          id="first-name-field"
-          placeholder="enter first name"
-        />
+        <input type="text" class="form-control" id="first-name-field" :value="user.firstName" />
       </div>
       <div class="form-group">
         <label for="last-name-field">Фамилия</label>
-        <input
-          type="text"
-          class="form-control"
-          id="last-name-field"
-          placeholder="enter last name"
-        />
+        <input type="text" class="form-control" id="last-name-field" :value="user.lastName" />
       </div>
       <div class="form-group">
         <label for="balance-field">Баланс</label>
@@ -26,7 +16,7 @@
           class="form-control"
           id="balance-field"
           aria-describedby="balance-help"
-          placeholder="enter balance"
+          :value="user.balance"
         />
         <small id="balance-help" class="form-text text-muted">
           We'll never share your balance with anyone else :)
@@ -34,7 +24,7 @@
       </div>
       <div class="form-group">
         <label for="phone-field">Телефон</label>
-        <input type="tel" class="form-control" id="phone-field" placeholder="phone" />
+        <input type="tel" class="form-control" id="phone-field" :value="user.phone" />
       </div>
       <div class="form-group">
         <label for="address-field">Адрес</label>
@@ -43,7 +33,7 @@
           class="form-control"
           id="address-field"
           aria-describedby="addressHelp"
-          placeholder="enter address"
+          :value="user.address"
         />
         <small id="addressHelp" class="form-text text-muted">
           We'll never share your address with anyone else.
@@ -51,18 +41,26 @@
       </div>
       <div class="form-group">
         <label for="company-field">Компания</label>
-        <input type="text" class="form-control" id="company-field" placeholder="company" />
+        <input type="text" class="form-control" id="company-field" :value="user.company" />
       </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">
-          Подтверждаю корректность заполненных данных
-        </label>
-      </div>
-      <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'EditUser',
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
+  data: () => ({
+    accessList: ['guest', 'user', 'admin']
+  })
+}
+</script>
 
 <style>
 .form-check {

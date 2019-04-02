@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>
+      <router-link class="navbar-brand" to="/">
+        Vue-cli-crush-course
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -15,15 +17,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/users">Users</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/edit">Edit user</router-link>
-          </li>
+          <router-link to="/" tag="li" class="nav-item" exact>
+            <a class="nav-link">Home</a>
+          </router-link>
+          <router-link to="/users" tag="li" class="nav-item">
+            <a class="nav-link">Users</a>
+          </router-link>
         </ul>
       </div>
     </nav>

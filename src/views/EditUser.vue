@@ -1,7 +1,11 @@
 <template>
   <div class="edit-user">
     <h1 class="edit-user__title">Редактирование пользователя {{ id }}</h1>
-    <edit-user :user="user" />
+
+    <div class="alert alert-warning" v-if="!user">
+      Загрузка...
+    </div>
+    <edit-user v-else v-model="user" />
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />
       <label class="form-check-label" for="exampleCheck1">
@@ -23,7 +27,7 @@ export default {
     'edit-user': EditUser
   },
   data: () => ({
-    user: null || {}
+    user: null
   }),
   computed: {
     id() {

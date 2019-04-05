@@ -1,11 +1,11 @@
 <template>
   <div class="edit-user">
-    <h1 class="edit-user__title">Редактирование пользователя {{ id }}</h1>
+    <h1 class="edit-user__title">Добавление пользователя {{ id }}</h1>
 
     <div class="alert alert-warning" v-if="!user">
       Загрузка...
     </div>
-    <edit-user v-else v-model="user" />
+    <add-user v-else v-model="user" />
     <div class="container">
       <button type="submit" class="btn btn-primary" @click="saveUser">Сохранить</button>
       <pre>{{ user }}</pre>
@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import EditUser from '@/components/EditUser.vue'
+import AddUser from '@/components/AddUser.vue'
 import axios from 'axios'
 
 export default {
-  name: 'edit',
+  name: 'add-user',
   components: {
-    'edit-user': EditUser
+    'add-user': AddUser
   },
   data: () => ({
     user: null

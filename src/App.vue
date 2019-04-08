@@ -23,9 +23,6 @@
           <router-link to="/users" tag="li" class="nav-item">
             <a class="nav-link">Users</a>
           </router-link>
-          <router-link to="/add-user" tag="li" class="nav-item">
-            <a class="nav-link">Add</a>
-          </router-link>
         </ul>
       </div>
     </nav>

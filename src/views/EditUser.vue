@@ -1,12 +1,11 @@
 <template>
   <div class="edit-user">
     <h1 class="edit-user__title">Редактирование пользователя {{ id }}</h1>
-
-    <div class="alert alert-warning" v-if="!user">
-      Загрузка...
-    </div>
-    <edit-user v-else v-model="user" />
     <div class="container">
+      <div class="alert alert-warning" v-if="!user">
+        Загрузка...
+      </div>
+      <edit-user v-else v-model="user" />
       <button type="submit" class="btn btn-primary" @click="saveUser">Сохранить</button>
       <pre>{{ user }}</pre>
     </div>
@@ -14,13 +13,12 @@
 </template>
 
 <script>
-import EditUser from '@/components/EditUser.vue'
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   name: 'edit',
   components: {
-    'edit-user': EditUser
+    EditUser: () => import('@/components/EditUser.vue')
   },
   data: () => ({
     user: null
@@ -28,6 +26,9 @@ export default {
   computed: {
     id() {
       return this.$route.params.id
+    },
+    url() {
+      return '/users/' + this.id
     }
   },
   mounted() {
@@ -36,16 +37,14 @@ export default {
   methods: {
     loadUser() {
       axios
-        .get('http://localhost:3004/users/' + this.id)
+        .get(this.url)
         .then(response => response.data)
         .then(user => {
           this.user = user
         })
     },
     saveUser() {
-      axios.patch('http://localhost:3004/users/' + this.id, this.user).then(() => {
-        this.$router.push('/users')
-      })
+      axios.patch(this.url, this.user).then(() => this.$router.push('/users'))
     }
   }
 }

@@ -55,8 +55,12 @@
 <script>
 export default {
   name: 'EditUser',
+  model: {
+    prop: 'user',
+    event: 'megaEvent'
+  },
   props: {
-    value: {
+    user: {
       type: Object,
       required: true
     }
@@ -73,11 +77,11 @@ export default {
     }
   },
   mounted() {
-    this.localUser = Object.assign({}, this.value)
+    this.localUser = Object.assign({}, this.user)
   },
   methods: {
     updateUser() {
-      this.$emit('input', Object.assign({}, this.localUser))
+      this.$emit('megaEvent', Object.assign({}, this.localUser))
     }
   }
 }

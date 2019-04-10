@@ -24,7 +24,7 @@
             <button v-on:click="remove(item.id)" type="button" title="Delete">
               {{ 'Del ' + item.id }}
             </button>
-            <router-link :to="'/edit' + item.id"># {{ item.id }}</router-link>
+            <router-link :to="'/edit' + item.id">Edit user # {{ item.id }}</router-link>
           </td>
           <td class="table__body-cell">{{ item.lastName | toUppercase }}</td>
           <td class="table__body-cell">{{ item.firstName | toUppercase }}</td>

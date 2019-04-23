@@ -23,9 +23,9 @@
           aria-describedby="balance-help"
           v-model="localUser.balance"
         />
-        <small id="balance-help" class="form-text text-muted">
-          We'll never share your balance with anyone else :)
-        </small>
+        <small id="balance-help" class="form-text text-muted"
+          >We'll never share your balance with anyone else :)</small
+        >
       </div>
       <div class="form-group">
         <label for="phone-field">Телефон</label>
@@ -40,13 +40,18 @@
           aria-describedby="addressHelp"
           v-model="localUser.address"
         />
-        <small id="addressHelp" class="form-text text-muted">
-          We'll never share your address with anyone else.
-        </small>
+        <small id="addressHelp" class="form-text text-muted"
+          >We'll never share your address with anyone else.</small
+        >
       </div>
       <div class="form-group">
         <label for="company-field">Компания</label>
         <input type="text" class="form-control" id="company-field" v-model="localUser.company" />
+      </div>
+      <div class="form-group">
+        <label>Дата регистрации</label>
+        <input type="text" class="form-control" v-model="localUser.registered" />
+        <datepicker v-model="localUser.registered"></datepicker>
       </div>
     </form>
   </div>
@@ -55,6 +60,9 @@
 <script>
 export default {
   name: 'EditUser',
+  components: {
+    datepicker: () => import('@/components/datepicker.vue')
+  },
   model: {
     prop: 'user',
     event: 'megaEvent'

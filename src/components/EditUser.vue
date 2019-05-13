@@ -75,7 +75,6 @@ export default {
   },
   data: () => ({
     localUser: {},
-
     accessList: ['guest', 'user', 'admin']
   }),
   watch: {
